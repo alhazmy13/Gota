@@ -13,7 +13,7 @@ import java.util.List;
 public class Gota {
 
     protected static Context context;
-    public static OnPermissionSetListener onPermissionSets;
+    public static OnRequestPermissionsBack onPermissionSets;
     protected static   List<String> permissions;
 
 
@@ -23,15 +23,15 @@ public class Gota {
 
     }
 
-    public void checkPermission(String[] permissions,OnPermissionSetListener listen) {
+    public void checkPermission(String[] permissions,OnRequestPermissionsBack listen) {
         onPermissionSets=listen;
         Gota.permissions=Arrays.asList(permissions);
         context.startActivity(new Intent(context,GotaActivity.class));
 
     }
 
-    public interface OnPermissionSetListener{
-        void OnPermissionsBack(GoaResponse goaResponse);
+    public interface OnRequestPermissionsBack{
+        void onRequestBack(GoaResponse goaResponse);
     }
 
 

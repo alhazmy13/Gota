@@ -10,7 +10,7 @@ import android.widget.TextView;
 import net.alhazmy13.libary.GoaResponse;
 import net.alhazmy13.libary.Gota;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,Gota.OnPermissionSetListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,Gota.OnRequestPermissionsBack {
 
     private TextView camera,gps,call;
     private Button checkButton;
@@ -25,6 +25,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
+
+
+        new Gota(this).checkPermission(new String[]{Manifest.permission.CAMERA}, new Gota.OnRequestPermissionsBack() {
+            @Override
+            public void onRequestBack(GoaResponse goaResponse) {
+
+            }
+        });
+
 
     }
 
@@ -43,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void OnPermissionsBack(GoaResponse goaResponse) {
+    public void onRequestBack(GoaResponse goaResponse) {
         if(goaResponse.isGranted(mPermissions[CAMERA])) {
             camera.setText("Allow");
             camera.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
@@ -59,6 +68,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
-
-
 }

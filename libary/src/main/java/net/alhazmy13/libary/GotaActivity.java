@@ -56,11 +56,11 @@ public class GotaActivity extends Activity {
                 ActivityCompat.requestPermissions(this, mPermissionsList.toArray(new String[mPermissionsList.size()]),
                         REQUEST_CODE_ASK_PERMISSIONS);
             }else {
-                Gota.onPermissionSets.OnPermissionsBack(new GoaResponse(perms));
+                Gota.onPermissionSets.onRequestBack(new GoaResponse(perms));
             }
 
         }else{
-            Gota.onPermissionSets.OnPermissionsBack(new GoaResponse(perms));
+            Gota.onPermissionSets.onRequestBack(new GoaResponse(perms));
 
         }
 
@@ -83,8 +83,8 @@ public class GotaActivity extends Activity {
             // Fill with results
             for (int i = 0; i < permissions.length; i++)
                 perms.put(permissions[i], grantResults[i]);
-            // Check for ACCESS_FINE_LOCATION
-            Gota.onPermissionSets.OnPermissionsBack(new GoaResponse(perms));
+
+            Gota.onPermissionSets.onRequestBack(new GoaResponse(perms));
 
         }
     }
