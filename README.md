@@ -20,7 +20,8 @@ With Android 6.0 Marshmallow, Google introduced a new permission model that allo
 
 dependencies {
 	compile 'net.alhazmy13.Gota:libary:1.0.0-beta'
-}```
+}
+```
 
 ------ 
 
