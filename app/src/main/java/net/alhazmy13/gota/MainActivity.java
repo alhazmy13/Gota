@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initViews() {
-        gps = (TextView)findViewById(R.id.gpsState);
-        call = (TextView)findViewById(R.id.callState);
-        camera = (TextView) findViewById(R.id.cameraState);
+        gps = (TextView)findViewById(R.id.gpsStatus);
+        call = (TextView)findViewById(R.id.callStatus);
+        camera = (TextView) findViewById(R.id.cameraStatus);
         checkButton = (Button) findViewById(R.id.checkButton);
         checkButton.setOnClickListener(this);
         mPermissions=new String[]{Manifest.permission.CAMERA,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CALL_PHONE};
