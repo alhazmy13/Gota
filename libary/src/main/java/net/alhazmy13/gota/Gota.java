@@ -1,4 +1,4 @@
-package net.alhazmy13.libary;
+package net.alhazmy13.gota;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +31,7 @@ public class Gota {
     }
 
     public interface OnRequestPermissionsBack{
-        void onRequestBack(GoaResponse goaResponse);
+        void onRequestBack(GotaResponse goaResponse);
     }
 
 

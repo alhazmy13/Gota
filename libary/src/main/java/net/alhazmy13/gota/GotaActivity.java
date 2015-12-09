@@ -1,4 +1,4 @@
-package net.alhazmy13.libary;
+package net.alhazmy13.gota;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -56,11 +56,11 @@ public class GotaActivity extends Activity {
                 ActivityCompat.requestPermissions(this, mPermissionsList.toArray(new String[mPermissionsList.size()]),
                         REQUEST_CODE_ASK_PERMISSIONS);
             }else {
-                Gota.onPermissionSets.onRequestBack(new GoaResponse(perms));
+                Gota.onPermissionSets.onRequestBack(new GotaResponse(perms));
             }
 
         }else{
-            Gota.onPermissionSets.onRequestBack(new GoaResponse(perms));
+            Gota.onPermissionSets.onRequestBack(new GotaResponse(perms));
 
         }
 
@@ -84,7 +84,7 @@ public class GotaActivity extends Activity {
             for (int i = 0; i < permissions.length; i++)
                 perms.put(permissions[i], grantResults[i]);
 
-            Gota.onPermissionSets.onRequestBack(new GoaResponse(perms));
+            Gota.onPermissionSets.onRequestBack(new GotaResponse(perms));
 
         }
     }

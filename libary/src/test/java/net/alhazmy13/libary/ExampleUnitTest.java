@@ -1,4 +1,4 @@
-package net.alhazmy13.libary;
+package net.alhazmy13.gota;
 
 import org.junit.Test;
 

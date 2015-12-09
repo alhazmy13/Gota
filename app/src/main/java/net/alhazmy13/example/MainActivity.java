@@ -1,4 +1,4 @@
-package net.alhazmy13.gota;
+package net.alhazmy13.example;
 
 import android.Manifest;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import net.alhazmy13.libary.GoaResponse;
-import net.alhazmy13.libary.Gota;
+import net.alhazmy13.gota.Gota;
+import net.alhazmy13.gota.GotaResponse;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,Gota.OnRequestPermissionsBack {
 
@@ -27,12 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initViews();
 
 
-        new Gota(this).checkPermission(new String[]{Manifest.permission.CAMERA}, new Gota.OnRequestPermissionsBack() {
-            @Override
-            public void onRequestBack(GoaResponse goaResponse) {
-
-            }
-        });
 
 
     }
@@ -52,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onRequestBack(GoaResponse goaResponse) {
+    public void onRequestBack(GotaResponse goaResponse) {
         if(goaResponse.isGranted(mPermissions[CAMERA])) {
             camera.setText("Allow");
             camera.setTextColor(getResources().getColor(android.R.color.holo_green_dark));

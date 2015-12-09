@@ -1,4 +1,4 @@
-package net.alhazmy13.libary;
+package net.alhazmy13.gota;
 
 import android.content.pm.PackageManager;
 
@@ -9,10 +9,10 @@ import java.util.Map;
 /**
  * Created by Alhazmy13 on 12/6/15.
  */
-public class GoaResponse {
+public class GotaResponse {
     private Map<String,Integer> perms;
 
-    protected GoaResponse(Map<String, Integer> perms){
+    protected GotaResponse(Map<String, Integer> perms){
         this.perms=perms;
     }
 
