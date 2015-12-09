@@ -1,43 +1,64 @@
 package net.alhazmy13.gota;
 
 import android.Manifest;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import net.alhazmy13.libary.GoaResponse;
 import net.alhazmy13.libary.Gota;
-import net.alhazmy13.libary.GotaResponce;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,Gota.OnPermissionSetListener {
+
+    private TextView camera,gps,call;
+    private Button checkButton;
+    private String[] mPermissions;
+
+    private static final int CAMERA=0;
+    private static final int GPS=1;
+    private static final int CALL=2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button mButton=(Button)findViewById(R.id.button);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Gota gota = new Gota(MainActivity.this);
-                gota.checkPermission(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, new Gota.OnPermissionSetListener() {
-                    @Override
-                    public void OnPermissionsBack(GotaResponce gotaResponce) {
-                        if (gotaResponce.isAllDenied())
-                            Toast.makeText(MainActivity.this, "Denied", Toast.LENGTH_SHORT).show();
-                        if (gotaResponce.isAllGranted())
-                            Toast.makeText(MainActivity.this, "Granted", Toast.LENGTH_SHORT).show();
-                        if (gotaResponce.deniedPermissions().length>0)
-                            Toast.makeText(MainActivity.this,gotaResponce.deniedPermissions()[0], Toast.LENGTH_SHORT).show();
+        initViews();
 
-                    }
-                });
-
-            }
-        });
     }
+
+    private void initViews() {
+        gps = (TextView)findViewById(R.id.gpsState);
+        call = (TextView)findViewById(R.id.callState);
+        camera = (TextView) findViewById(R.id.cameraState);
+        checkButton = (Button) findViewById(R.id.checkButton);
+        checkButton.setOnClickListener(this);
+        mPermissions=new String[]{Manifest.permission.CAMERA,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CALL_PHONE};
+    }
+
+    @Override
+    public void onClick(View view) {
+        new Gota(this).checkPermission(mPermissions,this);
+    }
+
+    @Override
+    public void OnPermissionsBack(GoaResponse goaResponse) {
+        if(goaResponse.isGranted(mPermissions[CAMERA])) {
+            camera.setText("Granted");
+            camera.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
+        }
+        if(goaResponse.isGranted(mPermissions[GPS])) {
+            gps.setText("Granted");
+            gps.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
+
+        }
+        if(goaResponse.isGranted(mPermissions[CALL])) {
+            call.setText("Granted");
+            call.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
+
+        }
+    }
+
 
 }

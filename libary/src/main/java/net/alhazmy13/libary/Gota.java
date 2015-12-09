@@ -1,13 +1,10 @@
 package net.alhazmy13.libary;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,7 +14,7 @@ public class Gota {
 
     protected static Context context;
     public static OnPermissionSetListener onPermissionSets;
-    public static   List<String> permissions;
+    protected static   List<String> permissions;
 
 
     public Gota(Context context){
@@ -34,11 +31,9 @@ public class Gota {
     }
 
     public interface OnPermissionSetListener{
-        void OnPermissionsBack(GotaResponce gotaResponce);
+        void OnPermissionsBack(GoaResponse goaResponse);
     }
-    public void setOnPermissionSetListener(OnPermissionSetListener listen) {
-        onPermissionSets = listen;
-    }
+
 
 
 }

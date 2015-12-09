@@ -1,19 +1,12 @@
 package net.alhazmy13.libary;
 
-import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,11 +56,11 @@ public class GotaActivity extends Activity {
                 ActivityCompat.requestPermissions(this, mPermissionsList.toArray(new String[mPermissionsList.size()]),
                         REQUEST_CODE_ASK_PERMISSIONS);
             }else {
-                Gota.onPermissionSets.OnPermissionsBack(new GotaResponce(perms));
+                Gota.onPermissionSets.OnPermissionsBack(new GoaResponse(perms));
             }
 
         }else{
-            Gota.onPermissionSets.OnPermissionsBack(new GotaResponce(perms));
+            Gota.onPermissionSets.OnPermissionsBack(new GoaResponse(perms));
 
         }
 
@@ -91,7 +84,7 @@ public class GotaActivity extends Activity {
             for (int i = 0; i < permissions.length; i++)
                 perms.put(permissions[i], grantResults[i]);
             // Check for ACCESS_FINE_LOCATION
-            Gota.onPermissionSets.OnPermissionsBack(new GotaResponce(perms));
+            Gota.onPermissionSets.OnPermissionsBack(new GoaResponse(perms));
 
         }
     }

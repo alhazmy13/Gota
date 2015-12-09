@@ -9,10 +9,10 @@ import java.util.Map;
 /**
  * Created by Alhazmy13 on 12/6/15.
  */
-public class GotaResponce {
+public class GoaResponse {
     private Map<String,Integer> perms;
 
-    protected GotaResponce(Map<String,Integer> perms){
+    protected GoaResponse(Map<String, Integer> perms){
         this.perms=perms;
     }
 
@@ -61,6 +61,13 @@ public class GotaResponce {
                 return true;
         }
         return false;
+    }
+
+    public boolean isGranted(String permission){
+        return (perms.get(permission) == PackageManager.PERMISSION_GRANTED);
+    }
+    public boolean isDenied(String permission){
+        return (perms.get(permission) == PackageManager.PERMISSION_DENIED);
     }
 
 }
