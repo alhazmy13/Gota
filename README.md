@@ -52,12 +52,12 @@ In order to receive the response, you will need to implement the `OnRequestPermi
     }
 ```
 
- ### `GoaResponse` methodes
+### `GotaResponse` methodes
  
  * `deniedPermissions()` 
-     * return a list of denied permissions.
+     * Return a list of denied permissions.
  * `grantedPermissions()`
-      * return a list of denied permissions.
+      * Return a list of denied permissions.
  * `isGranted(String)`
     * To check if the permission was granted or not.   
  *  `isDenied(String)`
