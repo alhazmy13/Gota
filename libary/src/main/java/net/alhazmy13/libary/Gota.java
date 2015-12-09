@@ -17,34 +17,28 @@ public class Gota {
 
     protected static Context context;
     public static OnPermissionSetListener onPermissionSets;
-    protected static List<String> permissions;
+    public static   List<String> permissions;
 
-    public static void RequestPermissions(Context context,List<String> per){
-        permissions=per;
-        context.startActivity(new Intent(context, GotaActivity.class));
-    }
+
     public Gota(Context context){
         this.context=context;
         permissions=new ArrayList<>();
+
     }
 
-    public void requestPermission(String... permissions) {
+    public void checkPermission(String[] permissions,OnPermissionSetListener listen) {
+        onPermissionSets=listen;
         Gota.permissions=Arrays.asList(permissions);
-        context.startActivity(new Intent(context, GotaActivity.class));
+        context.startActivity(new Intent(context,GotaActivity.class));
+
     }
 
     public interface OnPermissionSetListener{
-        void OnPermissionsGranted();
-        void OnPermissionDenied();
+        void OnPermissionsBack(GotaResponce gotaResponce);
     }
     public void setOnPermissionSetListener(OnPermissionSetListener listen) {
         onPermissionSets = listen;
     }
-
-
-
-
-
 
 
 }
