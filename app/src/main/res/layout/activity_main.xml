@@ -36,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Denied"
+            android:text="Deny"
             android:id="@+id/cameraStatus"
             android:layout_row="0"
             android:layout_column="1"
@@ -57,7 +57,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Denied"
+            android:text="Deny"
             android:id="@+id/callStatus"
             android:layout_row="1"
             android:layout_column="1"
@@ -78,7 +78,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Denied"
+            android:text="Deny"
             android:id="@+id/gpsStatus"
             android:layout_row="2"
             android:layout_column="1"

@@ -45,16 +45,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void OnPermissionsBack(GoaResponse goaResponse) {
         if(goaResponse.isGranted(mPermissions[CAMERA])) {
-            camera.setText("Granted");
+            camera.setText("Allow");
             camera.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
         }
         if(goaResponse.isGranted(mPermissions[GPS])) {
-            gps.setText("Granted");
+            gps.setText("Allow");
             gps.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
 
         }
         if(goaResponse.isGranted(mPermissions[CALL])) {
-            call.setText("Granted");
+            call.setText("Allow");
             call.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
 
         }
