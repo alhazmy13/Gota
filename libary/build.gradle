@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
+//./gradlew bintrayUpload
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'Gota'
 
+    publishedGroupId = 'net.alhazmy13.Gota'
+    libraryName = 'libary'
+
+    artifact = 'libary'
+
+    libraryDescription = 'Gota'
+
+    siteUrl = 'https://github.com/alhzmy13/Gota'
+    gitUrl = 'https://github.com/alhzmy13/Gota.git'
+
+    libraryVersion = '1.0.0-beta'
+
+    developerId = 'alhazmy13'
+    developerName = 'Abdullah Alhazmy'
+    developerEmail = 'me@alhazmy13.net'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -23,3 +47,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
 }
+apply from: './bintrayv1.gradle'
+apply from: './installv1.gradle'
