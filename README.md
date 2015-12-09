@@ -3,6 +3,11 @@
 
 With Android 6.0 Marshmallow, Google introduced a new permission model that allows users to better understand why an application may be requesting specific permissions. Rather than the user blindly accepting all permissions at install time, the user is now prompted to accept permissions as they become necessary during application use. As you probably already know, such a change requires efforts on the part of the application developer, this libary will help you to requset any number of permissions with a simple way.
 
+You can report any issue on issues page. **Note: If you speak Arabic, you can submit issues with Arabic language and I will check them. :)**
+
+![Preview](https://cloud.githubusercontent.com/assets/4659608/11697977/8366a464-9ecd-11e5-92a2-55114ea91965.gif)
+
+
 ------ 
 ## Install
 **Maven**
