@@ -66,6 +66,10 @@ In order to receive the response, you will need to implement the `OnRequestPermi
  * `isAllDenied()`
  * `hasDeniedPermission()`
 
+## Wiki
+
+* [Arabic](http://alhazmy13.net/runtimepermission_and_gota/)
+* [English](https://github.com/alhazmy13/Gota/blob/master/README.md)
 
 ## License
 ------ 
