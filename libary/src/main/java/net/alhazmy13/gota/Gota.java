@@ -26,12 +26,12 @@ public class Gota {
     public void checkPermission(String[] permissions,OnRequestPermissionsBack listen) {
         onPermissionSets=listen;
         Gota.permissions=Arrays.asList(permissions);
-        context.startActivity(new Intent(context,GotaActivity.class));
+        context.startActivity(new Intent(context,GotaActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
     }
 
     public interface OnRequestPermissionsBack{
-        void onRequestBack(GotaResponse goaResponse);
+        void onRequestBack(GotaResponse gotaResponse);
     }
 
 

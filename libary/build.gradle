@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/alhzmy13/Gota'
     gitUrl = 'https://github.com/alhzmy13/Gota.git'
 
-    libraryVersion = '1.0.0-beta'
+    libraryVersion = '1.0.1-beta'
 
     developerId = 'alhazmy13'
     developerName = 'Abdullah Alhazmy'

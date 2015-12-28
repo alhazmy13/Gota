@@ -26,7 +26,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initViews();
 
+        new Gota(this).checkPermission(new String[]{Manifest.permission.CAMERA}, new Gota.OnRequestPermissionsBack() {
+            @Override
+            public void onRequestBack(GotaResponse goaResponse) {
 
+            }
+        });
 
 
     }
