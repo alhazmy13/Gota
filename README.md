@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cloud.githubusercontent.com/assets/4659608/12700078/f9528158-c7e4-11e5-9a30-8ec0999be0ad.png">
+  <img src="https://cloud.githubusercontent.com/assets/4659608/12700078/f9528158-c7e4-11e5-9a30-8ec0999be0ad.png" width="300">
 </p>
 #Gota Libary
 
