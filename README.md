@@ -2,6 +2,9 @@
   <img src="https://cloud.githubusercontent.com/assets/4659608/12700078/f9528158-c7e4-11e5-9a30-8ec0999be0ad.png" width="400">
 </p>
 #Gota Libary
+![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
+![](https://img.shields.io/crates/l/rustc-serialize.svg)
+![](https://img.shields.io/badge/version-1.0.1_beta-blue.svg)
 
 With Android 6.0 Marshmallow, Google introduced a new permission model that allows users to better understand why an application may be requesting specific permissions. Rather than the user blindly accepting all permissions at install time, the user is now prompted to accept permissions as they become necessary during application use. As you probably already know, such a change requires efforts on the part of the application developer, this libary will help you to requset any number of permissions with a simple way.
 
