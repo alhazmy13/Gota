@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public class GotaActivity extends Activity {
 
-   // private Activity mContext;
+   // private Activity mContext; 
     final private int REQUEST_CODE_ASK_PERMISSIONS = 1;
     private List<String> mPermissionsList;
     private ArrayList<String> permissions;
