@@ -15,17 +15,20 @@ import java.util.Map;
 
 /**
  * Created by Alhazmy13 on 11/25/15.
+ * Gota
  */
 public class GotaActivity extends Activity {
 
    // private Activity mContext;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 1;
     private List<String> mPermissionsList;
+    private ArrayList<String> permissions;
     private Map<String, Integer> perms = new HashMap<String, Integer>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
       //  mContext=(Activity)Gota.context;
+        permissions = getIntent().getStringArrayListExtra("permissions");
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         init();
         checkPermissions();
@@ -36,11 +39,12 @@ public class GotaActivity extends Activity {
 
     private void init() {
         mPermissionsList=new ArrayList<>();
-        for(int i=0;i<Gota.permissions.size();i++){
-            perms.put(Gota.permissions.get(i), PackageManager.PERMISSION_GRANTED);
+
+        for(int i=0;i<permissions.size();i++){
+            perms.put(permissions.get(i), PackageManager.PERMISSION_GRANTED);
         }
-        for(int i=0;i<Gota.permissions.size();i++){
-            addPermission(mPermissionsList, Gota.permissions.get(i));
+        for(int i=0;i<permissions.size();i++){
+            addPermission(mPermissionsList, permissions.get(i));
         }
     }
 
@@ -56,12 +60,13 @@ public class GotaActivity extends Activity {
                 ActivityCompat.requestPermissions(this, mPermissionsList.toArray(new String[mPermissionsList.size()]),
                         REQUEST_CODE_ASK_PERMISSIONS);
             }else {
-                Gota.onPermissionSets.onRequestBack(new GotaResponse(perms));
+                Gota.onPermissionSets.onRequestBack(new GotaResponse(perms,this.permissions));
+                finish();
             }
 
         }else{
-            Gota.onPermissionSets.onRequestBack(new GotaResponse(perms));
-
+            Gota.onPermissionSets.onRequestBack(new GotaResponse(perms,this.permissions));
+            finish();
         }
 
     }
@@ -84,8 +89,8 @@ public class GotaActivity extends Activity {
             for (int i = 0; i < permissions.length; i++)
                 perms.put(permissions[i], grantResults[i]);
 
-            Gota.onPermissionSets.onRequestBack(new GotaResponse(perms));
-
+            Gota.onPermissionSets.onRequestBack(new GotaResponse(perms,this.permissions));
+            finish();
         }
     }
 

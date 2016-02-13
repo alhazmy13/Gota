@@ -1,8 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="net.alhazmy13.libary">
 
 
-    <application 
-        android:supportsRtl="true">
+    <application>
 
         <activity android:name="net.alhazmy13.gota.GotaActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
