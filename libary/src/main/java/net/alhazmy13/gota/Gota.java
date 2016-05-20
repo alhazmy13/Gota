@@ -1,11 +1,11 @@
 package net.alhazmy13.gota;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by Alhazmy13 on 11/24/15.
@@ -13,28 +13,89 @@ import java.util.List;
  */
 public class Gota {
 
-    protected Context context;
-    protected static OnRequestPermissionsBack onPermissionSets;
-    protected ArrayList<String> permissions;
+    private WeakReference<Activity> context;
+    /**
+     * The Permissions.
+     */
+    protected ArrayList permissions;
+    /**
+     * The constant listener.
+     */
+    protected static OnRequestPermissionsBack listener;
 
-
-    public Gota(Context context){
-        this.context=context;
-        permissions=new ArrayList<>();
-
+    private Gota(Builder builder) {
+        context = builder.context;
+        permissions = new ArrayList<>(Arrays.asList(builder.permissions));
+        listener = builder.listener;
+        Intent callingIntent = GotaActivity.getCallingIntent(context.get(), permissions);
+        context.get().startActivity(callingIntent);
     }
 
-    public void checkPermission(String[] permissions,OnRequestPermissionsBack listen) {
-        onPermissionSets=listen;
-        this.permissions = new ArrayList<>(Arrays.asList(permissions));
-        this.context.startActivity(new Intent(context,GotaActivity.class).putStringArrayListExtra("permissions",this.permissions).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
-    }
-
-    public interface OnRequestPermissionsBack{
+    /**
+     * The interface On request permissions back.
+     */
+    public interface OnRequestPermissionsBack {
+        /**
+         * On request back.
+         *
+         * @param gotaResponse the gota response
+         */
         void onRequestBack(GotaResponse gotaResponse);
     }
 
+    /**
+     * The type Builder.
+     */
+    public static class Builder {
+        private WeakReference<Activity> context;
+        private String[] permissions;
+        /**
+         * The Listener.
+         */
+        protected OnRequestPermissionsBack listener;
+
+        /**
+         * Instantiates a new Builder.
+         *
+         * @param activity the activity
+         */
+        public Builder(Activity activity) {
+            this.context = new WeakReference<>(activity);
+        }
+
+
+        /**
+         * With permissions gota . builder.
+         *
+         * @param permissions the permissions
+         * @return the gota . builder
+         */
+        public Gota.Builder withPermissions(String... permissions) {
+            this.permissions = permissions;
+            return this;
+        }
+
+        /**
+         * Sets listener.
+         *
+         * @param listener the listener
+         * @return the listener
+         */
+        public Gota.Builder setListener(OnRequestPermissionsBack listener) {
+            this.listener = listener;
+            return this;
+        }
+
+        /**
+         * Check gota.
+         *
+         * @return the gota
+         */
+        public Gota check() {
+            return new Gota(this);
+        }
+    }
 
 
 }

@@ -1,6 +1,7 @@
 package net.alhazmy13.gota;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -19,25 +20,22 @@ import java.util.Map;
  */
 public class GotaActivity extends Activity {
 
-   // private Activity mContext; 
-    final private int REQUEST_CODE_ASK_PERMISSIONS = 1;
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 323;
     private List<String> mPermissionsList;
     private ArrayList<String> permissions;
     private Map<String, Integer> perms = new HashMap<String, Integer>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  mContext=(Activity)Gota.context;
-        permissions = getIntent().getStringArrayListExtra("permissions");
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         init();
         checkPermissions();
 
-
-
     }
 
     private void init() {
+
+        permissions = getIntent().getStringArrayListExtra(GotaTags.PERMISSIONS);
         mPermissionsList=new ArrayList<>();
 
         for(int i=0;i<permissions.size();i++){
@@ -60,12 +58,12 @@ public class GotaActivity extends Activity {
                 ActivityCompat.requestPermissions(this, mPermissionsList.toArray(new String[mPermissionsList.size()]),
                         REQUEST_CODE_ASK_PERMISSIONS);
             }else {
-                Gota.onPermissionSets.onRequestBack(new GotaResponse(perms,this.permissions));
+                Gota.listener.onRequestBack(new GotaResponse(perms,this.permissions));
                 finish();
             }
 
         }else{
-            Gota.onPermissionSets.onRequestBack(new GotaResponse(perms,this.permissions));
+            Gota.listener.onRequestBack(new GotaResponse(perms,this.permissions));
             finish();
         }
 
@@ -89,9 +87,25 @@ public class GotaActivity extends Activity {
             for (int i = 0; i < permissions.length; i++)
                 perms.put(permissions[i], grantResults[i]);
 
-            Gota.onPermissionSets.onRequestBack(new GotaResponse(perms,this.permissions));
+            Gota.listener.onRequestBack(new GotaResponse(perms,this.permissions));
             finish();
         }
+    }
+
+
+    /**
+     * Get calling intent intent.
+     *
+     * @param activity    the activity
+     * @param permissions the permissions
+     * @return the intent
+     */
+    protected static Intent getCallingIntent(Context activity, ArrayList permissions){
+        Intent intent = new Intent(activity, GotaActivity.class);
+        intent.putExtra(GotaTags.PERMISSIONS,permissions);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
+
     }
 
 

@@ -14,11 +14,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView camera,gps,call;
     private Button checkButton;
-    private String[] mPermissions;
-
-    private static final int CAMERA=0;
-    private static final int GPS=1;
-    private static final int CALL=2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initViews();
 
-        new Gota(this).checkPermission(new String[]{Manifest.permission.CAMERA}, new Gota.OnRequestPermissionsBack() {
-            @Override
-            public void onRequestBack(GotaResponse goaResponse) {
 
-            }
-        });
 
 
     }
@@ -42,26 +32,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         camera = (TextView) findViewById(R.id.cameraStatus);
         checkButton = (Button) findViewById(R.id.checkButton);
         checkButton.setOnClickListener(this);
-        mPermissions=new String[]{Manifest.permission.CAMERA,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CALL_PHONE};
     }
 
     @Override
     public void onClick(View view) {
-        new Gota(this).checkPermission(mPermissions,this);
+        new Gota.Builder(this)
+                .withPermissions(Manifest.permission.CAMERA,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CALL_PHONE)
+                .setListener(this)
+                .check();
     }
 
     @Override
     public void onRequestBack(GotaResponse goaResponse) {
-        if(goaResponse.isGranted(mPermissions[CAMERA])) {
+        if(goaResponse.isGranted(Manifest.permission.CAMERA)) {
             camera.setText("Allow");
             camera.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
         }
-        if(goaResponse.isGranted(mPermissions[GPS])) {
+        if(goaResponse.isGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
             gps.setText("Allow");
             gps.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
 
         }
-        if(goaResponse.isGranted(mPermissions[CALL])) {
+        if(goaResponse.isGranted(Manifest.permission.CALL_PHONE)) {
             call.setText("Allow");
             call.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
 

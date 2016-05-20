@@ -4,7 +4,7 @@
 #Gota Libary
 ![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
 ![](https://img.shields.io/crates/l/rustc-serialize.svg)
-![](https://img.shields.io/badge/version-1.1.0-blue.svg)
+![](https://img.shields.io/badge/version-2.0.0-blue.svg)
 
 With Android 6.0 Marshmallow, Google introduced a new permission model that allows users to better understand why an application may be requesting specific permissions. Rather than the user blindly accepting all permissions at install time, the user is now prompted to accept permissions as they become necessary during application use. As you probably already know, such a change requires efforts on the part of the application developer, this libary will help you to requset any number of permissions with a simple way.
 
@@ -23,7 +23,7 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 <dependency>
 <groupId>net.alhazmy13.Gota</groupId>
 <artifactId>libary</artifactId>
-<version>1.1.0</version>
+<version>2.0.0</version>
 </dependency>
 ```
 
@@ -32,7 +32,7 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 ```gradle
 
 dependencies {
-	compile 'net.alhazmy13.Gota:libary:1.1.0'
+	compile 'net.alhazmy13.Gota:libary:2.0.0'
 }
 ```
 
@@ -43,35 +43,39 @@ dependencies {
 After adding the library, you just need to create an instance from Gota libary and passing an array of permissions.
 
 ```java
-new Gota(this).checkPermission(new String[]{Manifest.permission.CAMERA}, new Gota.OnRequestPermissionsBack() {
-            @Override
-            public void onRequestBack(GoaResponse goaResponse) {
-
-            }
-        });
+new Gota.Builder(this)
+                .withPermissions(Manifest.permission.CAMERA,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CALL_PHONE)
+                .setListener(this)
+                .check();
 ```
 ### `OnRequestPermissionsBack`
 In order to receive the response, you will need to implement the `OnRequestPermissionsBack`  interfaces.
 ```java
-    @Override
-    public void onRequestBack(GoaResponse goaResponse) {
-
-    }
+   @Override
+       public void onRequestBack(GotaResponse gotaResponse) {
+           if(gotaResponse.isGranted(Manifest.permission.CAMERA)) {
+              Log.d(TAG, "GRATED")
+           }
+       
+       }
 ```
 
-### `GotaResponse` methodes
+### `GotaResponse` methods
  
  * `deniedPermissions()` 
      * Return a list of denied permissions.
  * `grantedPermissions()`
-      * Return a list of denied permissions.
+      * Return a list of grated permissions.
  * `isGranted(String)`
     * To check if the permission was granted or not.   
  *  `isDenied(String)`
     * To check if the permission was denied or not.   
  * `isAllGranted()`
+    * return true if the all permission was grated
  * `isAllDenied()`
+    * return true if the all permission was denied
  * `hasDeniedPermission()`
+    * return true if there's any denied permission
 
 ## Wiki
 
