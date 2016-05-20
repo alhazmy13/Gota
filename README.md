@@ -4,7 +4,7 @@
 #Gota Libary
 ![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
 ![](https://img.shields.io/crates/l/rustc-serialize.svg)
-![](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![](https://img.shields.io/badge/version-1.2.0-blue.svg)
 
 With Android 6.0 Marshmallow, Google introduced a new permission model that allows users to better understand why an application may be requesting specific permissions. Rather than the user blindly accepting all permissions at install time, the user is now prompted to accept permissions as they become necessary during application use. As you probably already know, such a change requires efforts on the part of the application developer, this libary will help you to requset any number of permissions with a simple way.
 
@@ -23,7 +23,7 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 <dependency>
 <groupId>net.alhazmy13.Gota</groupId>
 <artifactId>libary</artifactId>
-<version>2.0.0</version>
+<version>1.2.0</version>
 </dependency>
 ```
 
@@ -32,7 +32,7 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 ```gradle
 
 dependencies {
-	compile 'net.alhazmy13.Gota:libary:2.0.0'
+	compile 'net.alhazmy13.Gota:libary:1.2.0'
 }
 ```
 
