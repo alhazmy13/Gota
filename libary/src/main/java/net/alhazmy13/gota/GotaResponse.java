@@ -1,6 +1,9 @@
 package net.alhazmy13.gota;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.os.Build;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +16,17 @@ import java.util.Map;
 public class GotaResponse {
     private final Map<String, Integer> mPerms;
     private final ArrayList<String> mUserPermission;
-
+    private Activity mActivity;
     /**
      * Instantiates a new Gota response.
      *
      * @param perms    the perms
      * @param userPerm the user perm
      */
-    protected GotaResponse(Map<String, Integer> perms, ArrayList<String> userPerm) {
+    protected GotaResponse(Map<String, Integer> perms, ArrayList<String> userPerm,Activity activity) {
         this.mPerms = perms;
         this.mUserPermission = userPerm;
+        this.mActivity = activity;
     }
 
     /**
@@ -95,6 +99,19 @@ public class GotaResponse {
                 return true;
         }
         return false;
+    }
+
+
+
+    /**
+     * Is on never ask again boolean.
+     *
+     * @param permission the permission
+     * @return the boolean
+     */
+    @TargetApi(Build.VERSION_CODES.M)
+    public boolean isOnNeverAskAgain(String permission) {
+        return (!mActivity.shouldShowRequestPermissionRationale(permission));
     }
 
     /**

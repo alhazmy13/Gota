@@ -3,6 +3,7 @@ package net.alhazmy13.example;
 import android.Manifest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,7 +12,7 @@ import net.alhazmy13.gota.Gota;
 import net.alhazmy13.gota.GotaResponse;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,Gota.OnRequestPermissionsBack {
-
+    private static final String TAG = "MainActivity";
     private TextView camera,gps,call;
     private Button checkButton;
 
@@ -43,20 +44,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onRequestBack(GotaResponse goaResponse) {
-        if(goaResponse.isGranted(Manifest.permission.CAMERA)) {
+    public void onRequestBack(GotaResponse gotaResponse) {
+        if(gotaResponse.isGranted(Manifest.permission.CAMERA)) {
             camera.setText("Allow");
             camera.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
         }
-        if(goaResponse.isGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
+        if(gotaResponse.isGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
             gps.setText("Allow");
             gps.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
 
         }
-        if(goaResponse.isGranted(Manifest.permission.CALL_PHONE)) {
+        if(gotaResponse.isGranted(Manifest.permission.CALL_PHONE)) {
             call.setText("Allow");
             call.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
 
         }
+        
+        if(gotaResponse.isOnNeverAskAgain(Manifest.permission.CAMERA))
+            Log.d(TAG, "onRequestBack: CAMERA");
     }
 }

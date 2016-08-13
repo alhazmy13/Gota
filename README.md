@@ -23,7 +23,7 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 <dependency>
 <groupId>net.alhazmy13.Gota</groupId>
 <artifactId>libary</artifactId>
-<version>1.2.0</version>
+<version>1.3.0</version>
 </dependency>
 ```
 
@@ -32,7 +32,7 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 ```gradle
 
 dependencies {
-	compile 'net.alhazmy13.Gota:libary:1.2.0'
+	compile 'net.alhazmy13.Gota:libary:1.3.0'
 }
 ```
 
@@ -50,6 +50,7 @@ new Gota.Builder(this)
 ```
 ### `OnRequestPermissionsBack`
 In order to receive the response, you will need to implement the `OnRequestPermissionsBack`  interfaces.
+
 ```java
    @Override
        public void onRequestBack(GotaResponse gotaResponse) {
@@ -76,6 +77,9 @@ In order to receive the response, you will need to implement the `OnRequestPermi
     * return true if the all permission was denied
  * `hasDeniedPermission()`
     * return true if there's any denied permission
+ * `isOnNeverAskAgain()`
+    * return true if there's any permission that checked as never ask for permission again.
+ 
 
 ## Wiki
 
