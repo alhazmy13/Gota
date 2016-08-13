@@ -39,8 +39,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         new Gota.Builder(this)
                 .withPermissions(Manifest.permission.CAMERA,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CALL_PHONE)
+                .requestId(1)
                 .setListener(this)
                 .check();
+
     }
 
     @Override

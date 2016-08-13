@@ -27,7 +27,7 @@ public class Gota {
         context = builder.context;
         permissions = new ArrayList<>(Arrays.asList(builder.permissions));
         listener = builder.listener;
-        Intent callingIntent = GotaActivity.getCallingIntent(context.get(), permissions);
+        Intent callingIntent = GotaActivity.getCallingIntent(context.get(), permissions,builder.requestId);
         context.get().startActivity(callingIntent);
     }
 
@@ -50,6 +50,7 @@ public class Gota {
     public static class Builder {
         private WeakReference<Activity> context;
         private String[] permissions;
+        private int requestId;
         /**
          * The Listener.
          */
@@ -84,6 +85,17 @@ public class Gota {
          */
         public Gota.Builder setListener(OnRequestPermissionsBack listener) {
             this.listener = listener;
+            return this;
+        }
+
+        /**
+         * Request id gota . builder.
+         *
+         * @param requestId the request id
+         * @return the gota . builder
+         */
+        public Gota.Builder requestId(int requestId){
+            this.requestId = requestId;
             return this;
         }
 

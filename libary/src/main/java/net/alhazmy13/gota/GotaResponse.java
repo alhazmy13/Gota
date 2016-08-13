@@ -17,16 +17,18 @@ public class GotaResponse {
     private final Map<String, Integer> mPerms;
     private final ArrayList<String> mUserPermission;
     private Activity mActivity;
+    public final int requestId;
     /**
      * Instantiates a new Gota response.
      *
      * @param perms    the perms
      * @param userPerm the user perm
      */
-    protected GotaResponse(Map<String, Integer> perms, ArrayList<String> userPerm,Activity activity) {
+    protected GotaResponse(Map<String, Integer> perms, ArrayList<String> userPerm,Activity activity,int requestId) {
         this.mPerms = perms;
         this.mUserPermission = userPerm;
         this.mActivity = activity;
+        this.requestId = requestId;
     }
 
     /**
@@ -121,6 +123,7 @@ public class GotaResponse {
      * @return the boolean
      */
     public boolean isGranted(String permission) {
+        if(!mPerms.containsKey(permission)) return false ;
         return (mPerms.get(permission) == PackageManager.PERMISSION_GRANTED);
     }
 
@@ -133,5 +136,7 @@ public class GotaResponse {
     public boolean isDenied(String permission) {
         return (mPerms.get(permission) == PackageManager.PERMISSION_DENIED);
     }
+
+
 
 }
