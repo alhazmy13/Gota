@@ -4,7 +4,7 @@
 #Gota Libary
 ![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
 ![](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![](https://img.shields.io/badge/version-1.2.0-blue.svg)
+![](https://img.shields.io/badge/version-1.3.0-blue.svg)
 
 With Android 6.0 Marshmallow, Google introduced a new permission model that allows users to better understand why an application may be requesting specific permissions. Rather than the user blindly accepting all permissions at install time, the user is now prompted to accept permissions as they become necessary during application use. As you probably already know, such a change requires efforts on the part of the application developer, this libary will help you to requset any number of permissions with a simple way.
 
@@ -86,7 +86,7 @@ In order to receive the response, you will need to implement the `OnRequestPermi
 
 ## Wiki
 
-* [Arabic](http://alhazmy13.net/runtimepermission_and_gota/)
+* [Arabic](https://github.com/alhazmy13/Gota/wiki/الشرح-بالعربي)
 * [English](https://github.com/alhazmy13/Gota/blob/master/README.md)
 
 ## License
