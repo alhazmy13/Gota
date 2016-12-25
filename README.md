@@ -59,28 +59,27 @@ In order to receive the response, you will need to implement the `OnRequestPermi
            // Your Code
         }
     } 
-    ```
+```
 
 ### `GotaResponse` methods
- 
- * `deniedPermissions()` 
-     * Return a list of denied permissions.
- * `grantedPermissions()`
-      * Return a list of grated permissions.
- * `isGranted(String)`
-    * To check if the permission was granted or not.   
- *  `isDenied(String)`
-    * To check if the permission was denied or not.   
- * `isAllGranted()`
-    * return true if the all permission was grated
- * `isAllDenied()`
-    * return true if the all permission was denied
- * `hasDeniedPermission()`
-    * return true if there's any denied permission
- * `isOnNeverAskAgain()`
-    * return true if there's any permission that checked as never ask for permission again.
- * `requestId` 
- 	* Id or token that was submited with Gota request.
+* `deniedPermissions()` 
+	* Return a list of denied permissions.
+* `grantedPermissions()`
+	* Return a list of grated permissions.
+* `isGranted(String)`
+	* To check if the permission was granted or not.   
+*  `isDenied(String)`
+	* To check if the permission was denied or not.   
+* `isAllGranted()`
+	* return true if the all permission was grated
+* `isAllDenied()`
+	* return true if the all permission was denied
+* `hasDeniedPermission()`
+	* return true if there's any denied permission
+* `isOnNeverAskAgain()`
+	* return true if there's any permission that checked as never ask for permission again.
+* `requestId` 
+	* Id or token that was submited with Gota request.
  
 
 ## Wiki
