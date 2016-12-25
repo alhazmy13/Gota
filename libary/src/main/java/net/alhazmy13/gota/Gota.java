@@ -2,6 +2,7 @@ package net.alhazmy13.gota;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class Gota {
          *
          * @param gotaResponse the gota response
          */
-        void onRequestBack(int requestId,GotaResponse gotaResponse);
+        void onRequestBack(int requestId,@NonNull GotaResponse gotaResponse);
     }
 
     /**
