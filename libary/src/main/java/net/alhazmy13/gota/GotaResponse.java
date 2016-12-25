@@ -17,14 +17,14 @@ public class GotaResponse {
     private final Map<String, Integer> mPerms;
     private final ArrayList<String> mUserPermission;
     private Activity mActivity;
-    public final int requestId;
+    private final int requestId;
     /**
      * Instantiates a new Gota response.
      *
      * @param perms    the perms
      * @param userPerm the user perm
      */
-    protected GotaResponse(Map<String, Integer> perms, ArrayList<String> userPerm,Activity activity,int requestId) {
+    GotaResponse(Map<String, Integer> perms, ArrayList<String> userPerm, Activity activity, int requestId) {
         this.mPerms = perms;
         this.mUserPermission = userPerm;
         this.mActivity = activity;

@@ -21,7 +21,7 @@ public class Gota {
     /**
      * The constant listener.
      */
-    protected static OnRequestPermissionsBack listener;
+    static OnRequestPermissionsBack listener;
 
     private Gota(Builder builder) {
         context = builder.context;
@@ -41,7 +41,7 @@ public class Gota {
          *
          * @param gotaResponse the gota response
          */
-        void onRequestBack(GotaResponse gotaResponse);
+        void onRequestBack(int requestId,GotaResponse gotaResponse);
     }
 
     /**

@@ -7,7 +7,7 @@ package net.alhazmy13.gota;
 class GotaTags {
 
 
-    protected static final String PERMISSIONS = "PERMISSIONS";
+    static final String PERMISSIONS = "PERMISSIONS";
     public static final String MSG = "MSG";
-    public static final String REQ_ID = "REQ_ID";
+    static final String REQ_ID = "REQ_ID";
 }

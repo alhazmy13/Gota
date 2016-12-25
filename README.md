@@ -4,7 +4,7 @@
 #Gota Libary
 ![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
 ![](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![](https://img.shields.io/badge/version-1.3.0-blue.svg)
+![](https://img.shields.io/badge/version-1.4.0-blue.svg)
 
 With Android 6.0 Marshmallow, Google introduced a new permission model that allows users to better understand why an application may be requesting specific permissions. Rather than the user blindly accepting all permissions at install time, the user is now prompted to accept permissions as they become necessary during application use. As you probably already know, such a change requires efforts on the part of the application developer, this libary will help you to requset any number of permissions with a simple way.
 
@@ -23,7 +23,7 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 <dependency>
 <groupId>net.alhazmy13.Gota</groupId>
 <artifactId>libary</artifactId>
-<version>1.3.0</version>
+<version>1.4.0</version>
 </dependency>
 ```
 
@@ -32,7 +32,7 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 ```gradle
 
 dependencies {
-	compile 'net.alhazmy13.Gota:libary:1.3.0'
+	compile 'net.alhazmy13.Gota:libary:1.4.0'
 }
 ```
 
@@ -54,7 +54,7 @@ In order to receive the response, you will need to implement the `OnRequestPermi
 
 ```java
    @Override
-       public void onRequestBack(GotaResponse gotaResponse) {
+       public void onRequestBack(int requestId,GotaResponse gotaResponse) {
            if(gotaResponse.isGranted(Manifest.permission.CAMERA)) {
               Log.d(TAG, "GRATED")
            }

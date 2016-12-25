@@ -45,8 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
     @Override
-    public void onRequestBack(GotaResponse gotaResponse) {
+    public void onRequestBack(int requestId, GotaResponse gotaResponse) {
         if(gotaResponse.isGranted(Manifest.permission.CAMERA)) {
             camera.setText("Allow");
             camera.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
@@ -61,8 +62,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             call.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
 
         }
-        
+
         if(gotaResponse.isOnNeverAskAgain(Manifest.permission.CAMERA))
             Log.d(TAG, "onRequestBack: CAMERA");
+
     }
 }

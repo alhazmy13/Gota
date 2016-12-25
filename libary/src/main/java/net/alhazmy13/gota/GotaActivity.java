@@ -61,12 +61,12 @@ public class GotaActivity extends Activity {
                 ActivityCompat.requestPermissions(this, mPermissionsList.toArray(new String[mPermissionsList.size()]),
                         REQUEST_CODE_ASK_PERMISSIONS);
             }else {
-                Gota.listener.onRequestBack(new GotaResponse(perms,this.permissions,this,requestId));
+                Gota.listener.onRequestBack(requestId,new GotaResponse(perms,this.permissions,this,requestId));
                 finish();
             }
 
         }else{
-            Gota.listener.onRequestBack(new GotaResponse(perms,this.permissions,this,requestId));
+            Gota.listener.onRequestBack(requestId,new GotaResponse(perms,this.permissions,this,requestId));
             finish();
         }
 
@@ -89,7 +89,7 @@ public class GotaActivity extends Activity {
             // Fill with results
             for (int i = 0; i < permissions.length; i++)
                 perms.put(permissions[i], grantResults[i]);
-            Gota.listener.onRequestBack(new GotaResponse(perms,this.permissions,this,requestId));
+            Gota.listener.onRequestBack(requestId,new GotaResponse(perms,this.permissions,this,requestId));
             finish();
         }
     }
