@@ -58,7 +58,8 @@ In order to receive the response, you will need to implement the `OnRequestPermi
         if(gotaResponse.isGranted(Manifest.permission.CAMERA)) {
            // Your Code
         }
-    }```
+    } 
+    ```
 
 ### `GotaResponse` methods
  
