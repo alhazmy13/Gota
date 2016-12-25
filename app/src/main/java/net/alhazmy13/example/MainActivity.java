@@ -48,9 +48,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     @Override
-    public void onRequestBack(int requestId, @NonNull GotaResponse gotaResponse) {
+    public void onRequestBack(int requestId,@NonNull GotaResponse gotaResponse) {
         if(gotaResponse.isGranted(Manifest.permission.CAMERA)) {
-           // Your Code
+            camera.setText("Allow");
+            camera.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
         }
+        if(gotaResponse.isGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
+            gps.setText("Allow");
+            gps.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
+
+        }
+        if(gotaResponse.isGranted(Manifest.permission.CALL_PHONE)) {
+            call.setText("Allow");
+            call.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
+
+        }
+
+        if(gotaResponse.isOnNeverAskAgain(Manifest.permission.CAMERA))
+            Log.d(TAG, "onRequestBack: CAMERA");
+
     }
 }
