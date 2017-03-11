@@ -38,7 +38,7 @@ public class GotaResponse {
      */
 // TODO: 12/8/15 Optimize this
     public String[] deniedPermissions() {
-        List<String> list = new ArrayList();
+        List<String> list = new ArrayList<String>();
         for (int i = 0; i < mPerms.size(); i++) {
             if (mPerms.get(mUserPermission.get(i)) == PackageManager.PERMISSION_DENIED)
                 list.add(mUserPermission.get(i));
@@ -52,7 +52,7 @@ public class GotaResponse {
      * @return the string [ ]
      */
     public String[] grantedPermissions() {
-        List<String> list = new ArrayList();
+        List<String> list = new ArrayList<String>();
         for (int i = 0; i < mPerms.size(); i++) {
             if (mPerms.get(mUserPermission.get(i)) == PackageManager.PERMISSION_GRANTED)
                 list.add(mUserPermission.get(i));
@@ -123,8 +123,7 @@ public class GotaResponse {
      * @return the boolean
      */
     public boolean isGranted(String permission) {
-        if(!mPerms.containsKey(permission)) return false ;
-        return (mPerms.get(permission) == PackageManager.PERMISSION_GRANTED);
+        return mPerms.containsKey(permission) && (mPerms.get(permission) == PackageManager.PERMISSION_GRANTED);
     }
 
     /**
